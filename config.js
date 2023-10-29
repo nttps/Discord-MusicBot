@@ -26,12 +26,12 @@ module.exports = {
 	nodes: [
 		{
 			identifier: "LocalNode", //- Used for indentifier in stats commands.
-			host: "lava1.horizxon.tech", //- The host name or IP of the lavalink server.
-			port: 443, // The port that lavalink is listening to. This must be a number!
-			password: "horizxon.tech", //- The password of the lavalink server.
+			host: "docker.lavalink", //- The host name or IP of the lavalink server.
+			port: 2333, // The port that lavalink is listening to. This must be a number!
+			password: "youshallnotpass", //- The password of the lavalink server.
 			retryAmount: 15, //- The amount of times to retry connecting to the node if connection got dropped.
 			retryDelay: 6000, //- Delay between reconnect attempts if connection is lost.
-			secure: true, //- Can be either true or false. Only use true if ssl is enabled!
+			secure: false, //- Can be either true or false. Only use true if ssl is enabled!
 		},
 	],
 	embedColor: "#2f3136", //- Color of the embeds, hex supported
