@@ -14,9 +14,9 @@ services:
       - ./config.js:/usr/src/app/config.js:ro
 
   lavalink:
-    image: fredboat/lavalink:ab6c327-alpine
+    image: fredboat/lavalink:latest
     container_name: music-lavalink
-    hostname: docker.lavalink
+    hostname: lavalink
     restart: unless-stopped
     networks:
       - lavalink-net
