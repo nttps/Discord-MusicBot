@@ -45,7 +45,7 @@ module.exports = {
       embeds: [
         new MessageEmbed()
           .setColor(client.config.embedColor)
-          .setDescription(":mag_right: **Searching...**"),
+          .setDescription(":mag_right: **กำลังค้นหา...**"),
       ],
       fetchReply: true,
     });
