@@ -6,7 +6,7 @@ const os = require("os");
 
 const command = new SlashCommand()
 	.setName("stats")
-	.setDescription("Get information about the bot")
+	.setDescription("ดูข้อมูลบิท")
 	.setRun(async (client, interaction) => {
 		// get OS info
 		const osver = os.platform() + " " + os.release();
@@ -17,7 +17,7 @@ const command = new SlashCommand()
 		// get the uptime in a human readable format
 		const runtime = moment
 			.duration(client.uptime)
-			.format("d[ Days]・h[ Hrs]・m[ Mins]・s[ Secs]");
+			.format("d[ วัน]・h[ ชั่วโมง]・m[ นาที]・s[ วินาที]");
 		// show lavalink uptime in a nice format
 		const lavauptime = moment
 			.duration(client.manager.nodes.values().next().value.stats.uptime)
@@ -37,7 +37,7 @@ const command = new SlashCommand()
 		// show system uptime
 		var sysuptime = moment
 			.duration(os.uptime() * 1000)
-			.format("d[ Days]・h[ Hrs]・m[ Mins]・s[ Secs]");
+			.format("d[ วัน]・h[ ชั่วโมง]・m[ นาที]・s[ วินาที]");
 		
 		// get commit hash and date
 		let gitHash = "unknown";

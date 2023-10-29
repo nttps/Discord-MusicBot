@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 .setName("previous")
-.setDescription("Go back to the previous song.")
+.setDescription("ถอยไปเพลงก่อนหน้านี้")
 .setRun(async (client, interaction) => {
 	let channel = await client.getChannel(client, interaction);
 	if (!channel) {
@@ -28,7 +28,7 @@ const command = new SlashCommand()
 			embeds: [
 				new MessageEmbed()
 					.setColor("RED")
-					.setDescription("There are no previous songs for this session."),
+					.setDescription("ไม่มีเพลงก่อนหน้าในตอนนี้"),
 			],
 			ephemeral: true,
 		});
@@ -58,7 +58,7 @@ const command = new SlashCommand()
 			new MessageEmbed()
 				.setColor(client.config.embedColor)
 				.setDescription(
-					`⏮ | Previous song: **${ previousSong.title }**`,
+					`⏮ | เพลงก่อนหน้านี้: **${ previousSong.title }**`,
 				),
 		],
 	});

@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 	.setName("clear")
-	.setDescription("Clear all tracks from queue")
+	.setDescription("ล้างทุกเพลงออกจากคิว")
 	.setRun(async (client, interaction, options) => {
 		let channel = await client.getChannel(client, interaction);
 		if (!channel) {

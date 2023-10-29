@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 	.setName("stop")
-	.setDescription("Stops whatever the bot is playing and leaves the voice channel\n(This command will clear the queue)")
+	.setDescription("หยุดเพลงที่บอทกำลังเล่น และออกจากห้อง\n(คำสั่งนี้จะทำการล้างคิว)")
 	
 	.setRun(async (client, interaction, options) => {
 		let channel = await client.getChannel(client, interaction);

@@ -8,11 +8,11 @@ const {
 
 const command = new SlashCommand()
   .setName("search")
-  .setDescription("Search for a song")
+  .setDescription("ค้นหาเพลง")
   .addStringOption((option) =>
     option
       .setName("query")
-      .setDescription("The song to search for")
+      .setDescription("เพลงที่ค้นหา")
       .setRequired(true)
   )
   .setRun(async (client, interaction, options) => {
@@ -71,7 +71,7 @@ const command = new SlashCommand()
       return interaction.reply({
         embeds: [
           new MessageEmbed()
-            .setDescription(`No results found for \`${search}\``)
+            .setDescription(`ไม่เจอผลลัพธิ์ \`${search}\``)
             .setColor("RED"),
         ],
         ephemeral: true,
@@ -99,7 +99,7 @@ const command = new SlashCommand()
       const menus = new MessageActionRow().addComponents(
         new MessageSelectMenu()
           .setCustomId("select")
-          .setPlaceholder("Select a song")
+          .setPlaceholder("เปิดเพลง")
           .addOptions(resultFromSearch)
       );
 
@@ -108,7 +108,7 @@ const command = new SlashCommand()
           new MessageEmbed()
             .setColor(client.config.embedColor)
             .setDescription(
-              `Here are some of the results I found for \`${search}\`. Please select track within \`30 seconds\``
+              `ผลลัพธิ์บางส่วนที่พบ \`${search}\`. เลือกเพลงภายใน \`30 วิ\``
             ),
         ],
         components: [menus],
@@ -138,23 +138,23 @@ const command = new SlashCommand()
             embeds: [
               new MessageEmbed()
                 .setAuthor({
-                  name: "Added to queue",
+                  name: "เพิ่มในคิว",
                   iconURL: client.config.iconURL,
                 })
                 .setURL(res.tracks[0].uri)
                 .setThumbnail(res.tracks[0].displayThumbnail("maxresdefault"))
                 .setDescription(
                   `[${trackForPlay?.tracks[0]?.title}](${trackForPlay?.tracks[0].uri})` ||
-                    "No Title"
+                    "ไม่มีชื่อ"
                 )
                 .addFields(
                   {
-                    name: "Added by",
+                    name: "เพิ่มโดย",
                     value: `<@${interaction.user.id}>`,
                     inline: true,
                   },
                   {
-                    name: "Duration",
+                    name: "เวลา",
                     value: res.tracks[0].isStream
                       ? `\`LIVE :red_circle:\``
                       : `\`${client.ms(res.tracks[0].duration, {

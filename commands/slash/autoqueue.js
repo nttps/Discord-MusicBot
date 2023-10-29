@@ -4,7 +4,7 @@ const SlashCommand = require("../../lib/SlashCommand");
 
 const command = new SlashCommand()
 	.setName("autoqueue")
-	.setDescription("Automatically add songs to the queue (toggle)")
+	.setDescription("เติมเพลงอัตโนมััติ")
 	.setRun(async (client, interaction) => {
 		let channel = await client.getChannel(client, interaction);
 		if (!channel) {
@@ -45,9 +45,9 @@ const command = new SlashCommand()
 			player.set("autoQueue", false);
 		}
 		autoQueueEmbed
-		  .setDescription(`**Auto Queue is** \`${!autoQueue ? "ON" : "OFF"}\``)
+		  .setDescription(`**ใส่เพลงอััตโนมตัิ** \`${!autoQueue ? "เปิด" : "ปิด"}\``)
 		  .setFooter({
-		    text: `Related music will ${!autoQueue ? "now be automatically" : "no longer be"} added to the queue.`
+		    text: `เพลงที่เกี่ยวข้องกัน ${!autoQueue ? "ใส่ให้อัตโนมัติ" : "ไม่ใส่"} ในคิว`
       });
 		client.warn(
 			`Player: ${ player.options.guild } | [${ colors.blue(

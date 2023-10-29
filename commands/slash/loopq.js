@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 	.setName("loopq")
-	.setDescription("Loop the current song queue")
+	.setDescription("วนลูปเพลงในคิวทั้งหมด")
 	.setRun(async (client, interaction, options) => {
 		let channel = await client.getChannel(client, interaction);
 		if (!channel) {
@@ -37,14 +37,14 @@ const command = new SlashCommand()
 		if (player.setQueueRepeat(!player.queueRepeat)) {
 			;
 		}
-		const queueRepeat = player.queueRepeat? "enabled" : "disabled";
+		const queueRepeat = player.queueRepeat? "เปิด" : "ปิด";
 		
 		interaction.reply({
 			embeds: [
 				new MessageEmbed()
 					.setColor(client.config.embedColor)
 					.setDescription(
-						`:thumbsup: | **Loop queue is now \`${ queueRepeat }\`**`,
+						`:thumbsup: | **วนลูปคิวตอนนี้ \`${ queueRepeat }\`**`,
 					),
 			],
 		});

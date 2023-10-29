@@ -3,11 +3,11 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 	.setName("skipto")
-	.setDescription("skip to a specific song in the queue")
+	.setDescription("เลือกเพลงที่ต้องการข้ามไปเล่น")
 	.addNumberOption((option) =>
 		option
 			.setName("number")
-			.setDescription("The number of tracks to skipto")
+			.setDescription("ตำแหน่งของเพลงที่จะข้ามไป")
 			.setRequired(true),
 	)
 	
@@ -52,7 +52,7 @@ const command = new SlashCommand()
 			if (!position || position < 0 || position > player.queue.size) {
 				let thing = new MessageEmbed()
 					.setColor(client.config.embedColor)
-					.setDescription("❌ | Invalid position!");
+					.setDescription("❌ | ผิดตำแหน่ง!");
 				return interaction.editReply({ embeds: [thing] });
 			}
 			
@@ -61,7 +61,7 @@ const command = new SlashCommand()
 			
 			let thing = new MessageEmbed()
 				.setColor(client.config.embedColor)
-				.setDescription("✅ | Skipped to position " + position);
+				.setDescription("✅ | ข้ามไปตำแหน่ง " + position);
 			
 			return interaction.editReply({ embeds: [thing] });
 		} catch {
@@ -72,7 +72,7 @@ const command = new SlashCommand()
 				embeds: [
 					new MessageEmbed()
 						.setColor(client.config.embedColor)
-						.setDescription("✅ | Skipped to position " + position),
+						.setDescription("✅ | ข้ามไปตำแหน่ง " + position + "แล้ว"),
 				],
 			});
 		}

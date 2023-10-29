@@ -4,11 +4,11 @@ const ms = require("ms");
 
 const command = new SlashCommand()
 	.setName("seek")
-	.setDescription("Seek to a specific time in the current song.")
+	.setDescription("ข้ามไปเวลาที่กำหนดของเพลงนี้")
 	.addStringOption((option) =>
 		option
 			.setName("time")
-			.setDescription("Seek to time you want. Ex 1h 30m | 2h | 80m | 53s")
+			.setDescription("เลือกเวลาที่ต้องการ เช่น 1h 30m | 2h | 80m | 53s")
 			.setRequired(true),
 	)
 	.setRun(async (client, interaction, options) => {
@@ -60,9 +60,9 @@ const command = new SlashCommand()
 					new MessageEmbed()
 						.setColor(client.config.embedColor)
 						.setDescription(
-							`⏩ | **${ player.queue.current.title }** has been ${
-								time < position? "rewound" : "seeked"
-							} to **${ ms(time) }**`,
+							`⏩ | **${ player.queue.current.title }** ได้ ${
+								time < position? "ย้อนกลับ" : "ข้าม"
+							} ไปที่ **${ ms(time) }**`,
 						),
 				],
 			});
@@ -72,7 +72,7 @@ const command = new SlashCommand()
 					new MessageEmbed()
 						.setColor(client.config.embedColor)
 						.setDescription(
-							`Unable to seek current playing track. This may be due to exceeding track duration or an incorrect time format. Please check and try again`,
+							`ค้นหาเวลที่กำลังเล่นไม่เจอ เนื่องจากเกินเวลา หรือใส่ข้อมูลไม่ถูกต้อง กรุณาลองใหม่`,
 						),
 				],
 			});

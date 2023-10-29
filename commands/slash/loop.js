@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 	.setName("loop")
-	.setDescription("Loops the current song")
+	.setDescription("เปิดวนเพลงตอนนี้")
 	.setRun(async (client, interaction, options) => {
 		let channel = await client.getChannel(client, interaction);
 		if (!channel) {
@@ -37,13 +37,13 @@ const command = new SlashCommand()
 		if (player.setTrackRepeat(!player.trackRepeat)) {
 			;
 		}
-		const trackRepeat = player.trackRepeat? "enabled" : "disabled";
+		const trackRepeat = player.trackRepeat? "เปิด" : "ปิด";
 		
 		interaction.reply({
 			embeds: [
 				new MessageEmbed()
 					.setColor(client.config.embedColor)
-					.setDescription(`👍 | **Loop has been \`${ trackRepeat }\`**`),
+					.setDescription(`👍 | **ลูปเพลง \`${ trackRepeat }\`**`),
 			],
 		});
 	});

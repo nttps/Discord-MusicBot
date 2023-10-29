@@ -6,7 +6,7 @@ const pms = require("pretty-ms");
 
 const command = new SlashCommand()
 	.setName("queue")
-	.setDescription("Shows the current queue")
+	.setDescription("แสดงคิวตอนนี้")
 	
 	.setRun(async (client, interaction, options) => {
 		let channel = await client.getChannel(client, interaction);
@@ -41,7 +41,7 @@ const command = new SlashCommand()
 		if (!player.playing) {
 			const queueEmbed = new MessageEmbed()
 				.setColor(client.config.embedColor)
-				.setDescription("There's nothing playing.");
+				.setDescription("ไม่มีเพลงที่กำลังเล่น");
 			return interaction.reply({ embeds: [queueEmbed], ephemeral: true });
 		}
 		
@@ -56,10 +56,10 @@ const command = new SlashCommand()
             var title = title.replace(/\[/g,"")
 			const queueEmbed = new MessageEmbed()
 				.setColor(client.config.embedColor)
-				.setDescription(`**♪ | Now playing:** [${ title }](${ song.uri })`)
+				.setDescription(`**♪ | กำลังเล่น:** [${ title }](${ song.uri })`)
 				.addFields(
 					{
-						name: "Duration",
+						name: "เวลา",
 						value: song.isStream
 							? `\`LIVE\``
 							: `\`${ pms(player.position, { colonNotation: true }) } / ${ pms(
@@ -69,12 +69,12 @@ const command = new SlashCommand()
 						inline: true,
 					},
 					{
-						name: "Volume",
+						name: "เสียง",
 						value: `\`${ player.volume }\``,
 						inline: true,
 					},
 					{
-						name: "Total Tracks",
+						name: "เพลงทั้งหมด",
 						value: `\`${ player.queue.totalSize - 1 }\``,
 						colonNotation: true,
 						inline: true,
@@ -123,11 +123,11 @@ const command = new SlashCommand()
 				const embedTwo = new MessageEmbed()
 					.setColor(client.config.embedColor)
 					.setDescription(
-						`**♪ | Now playing:** [${ title }](${ song.uri }) [${ player.queue.current.requester }]\n\n**Queued Tracks**\n${ pages[page] }`,
+						`**♪ | กำลังเล่น:** [${ title }](${ song.uri }) [${ player.queue.current.requester }]\n\n**เพลงในคิว**\n${ pages[page] }`,
 					)
 					.addFields(
 						{
-							name: "Track Duration",
+							name: "เวลา ",
 							value: song.isStream
 								? `\`LIVE\``
 								: `\`${ pms(player.position, { colonNotation: true }) } / ${ pms(
@@ -137,21 +137,21 @@ const command = new SlashCommand()
 							inline: true,
 						},
 						{
-							name: "Total Tracks Duration",
+							name: "เวลาทั้งหมด",
 							value: `\`${ pms(queueDuration, {
 								colonNotation: true,
 							}) }\``,
 							inline: true,
 						},
 						{
-							name: "Total Tracks",
+							name: "เพลงทั้งหมด",
 							value: `\`${ player.queue.totalSize - 1 }\``,
 							colonNotation: true,
 							inline: true,
 						},
 					)
 					.setFooter({
-						text: `Page ${ page + 1 }/${ pages.length }`,
+						text: `หน้า ${ page + 1 }/${ pages.length }`,
 					});
 				
 				await interaction
@@ -168,11 +168,11 @@ const command = new SlashCommand()
 				const embedThree = new MessageEmbed()
 					.setColor(client.config.embedColor)
 					.setDescription(
-						`**♪ | Now playing:** [${ title }](${ song.uri }) [${ player.queue.current.requester }]\n\n**Queued Tracks**\n${ pages[page] }`,
+						`**♪ | กำลังเล่น:** [${ title }](${ song.uri }) [${ player.queue.current.requester }]\n\n**เพลงที่อยู่ในคิส**\n${ pages[page] }`,
 					)
 					.addFields(
 						{
-							name: "Track Duration",
+							name: "เวลา",
 							value: song.isStream
 								? `\`LIVE\``
 								: `\`${ pms(player.position, { colonNotation: true }) } / ${ pms(
@@ -182,21 +182,21 @@ const command = new SlashCommand()
 							inline: true,
 						},
 						{
-							name: "Total Tracks Duration",
+							name: "เวลาทั้งหมด",
 							value: `\`${ pms(queueDuration, {
 								colonNotation: true,
 							}) }\``,
 							inline: true,
 						},
 						{
-							name: "Total Tracks",
+							name: "เพลงทั้งหมด",
 							value: `\`${ player.queue.totalSize - 1 }\``,
 							colonNotation: true,
 							inline: true,
 						},
 					)
 					.setFooter({
-						text: `Page ${ page + 1 }/${ pages.length }`,
+						text: `หน้า ${ page + 1 }/${ pages.length }`,
 					});
 				
 				const buttonOne = new MessageButton()
@@ -248,11 +248,11 @@ const command = new SlashCommand()
 						const embedFour = new MessageEmbed()
 							.setColor(client.config.embedColor)
 							.setDescription(
-								`**♪ | Now playing:** [${ title }](${ song.uri }) [${ player.queue.current.requester }]\n\n**Queued Tracks**\n${ pages[page] }`,
+								`**♪ | กำลังเล่น:** [${ title }](${ song.uri }) [${ player.queue.current.requester }]\n\n**เพลงในคิว**\n${ pages[page] }`,
 							)
 							.addFields(
 								{
-									name: "Track Duration",
+									name: "เวลา",
 									value: song.isStream
 										? `\`LIVE\``
 										: `\`${ pms(player.position, { colonNotation: true }) } / ${ pms(
@@ -262,21 +262,21 @@ const command = new SlashCommand()
 									inline: true,
 								},
 								{
-									name: "Total Tracks Duration",
+									name: "เพลงทั้งหมด Duration",
 									value: `\`${ pms(queueDuration, {
 										colonNotation: true,
 									}) }\``,
 									inline: true,
 								},
 								{
-									name: "Total Tracks",
+									name: "เพลงทั้งหมด",
 									value: `\`${ player.queue.totalSize - 1 }\``,
 									colonNotation: true,
 									inline: true,
 								},
 							)
 							.setFooter({
-								text: `Page ${ page + 1 }/${ pages.length }`,
+								text: `หน้า ${ page + 1 }/${ pages.length }`,
 							});
 						
 						await interaction.editReply({
@@ -296,11 +296,11 @@ const command = new SlashCommand()
 						const embedFive = new MessageEmbed()
 							.setColor(client.config.embedColor)
 							.setDescription(
-								`**♪ | Now playing:** [${ title }](${ song.uri }) [${ player.queue.current.requester }]\n\n**Queued Tracks**\n${ pages[page] }`,
+								`**♪ | กำลังเล่น:** [${ title }](${ song.uri }) [${ player.queue.current.requester }]\n\n**เพลงในคิว**\n${ pages[page] }`,
 							)
 							.addFields(
 								{
-									name: "Track Duration",
+									name: "เวลา",
 									value: song.isStream
 										? `\`LIVE\``
 										: `\`${ pms(player.position, { colonNotation: true }) } / ${ pms(
@@ -310,21 +310,21 @@ const command = new SlashCommand()
 									inline: true,
 								},
 								{
-									name: "Total Tracks Duration",
+									name: "เวลาทั้งหมด",
 									value: `\`${ pms(queueDuration, {
 										colonNotation: true,
 									}) }\``,
 									inline: true,
 								},
 								{
-									name: "Total Tracks",
+									name: "เพลงทั้งหมด",
 									value: `\`${ player.queue.totalSize - 1 }\``,
 									colonNotation: true,
 									inline: true,
 								},
 							)
 							.setFooter({
-								text: `Page ${ page + 1 }/${ pages.length }`,
+								text: `หน้า ${ page + 1 }/${ pages.length }`,
 							});
 						
 						await interaction

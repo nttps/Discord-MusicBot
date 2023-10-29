@@ -5,7 +5,7 @@ const path = require("path");
 
 const command = new SlashCommand()
 	.setName("reload")
-	.setDescription("Reload all commands")
+	.setDescription("โหลดคำสั่งใหม่ทั้งหมด")
 	.setRun(async (client, interaction, options) => {
 		if (interaction.user.id === client.config.adminId) {
 			try {

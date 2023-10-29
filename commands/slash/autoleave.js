@@ -4,7 +4,7 @@ const SlashCommand = require("../../lib/SlashCommand");
 
 const command = new SlashCommand()
   .setName("autoleave")
-  .setDescription("Automatically leaves when everyone leaves the voice channel (toggle)")
+  .setDescription("ออกจากห้องเมื่อไม่มีใครอยู่ในห้อง")
   .setRun(async (client, interaction) => {
     let channel = await client.getChannel(client, interaction);
     if (!channel) return;
@@ -26,7 +26,7 @@ const command = new SlashCommand()
         embeds: [
           new MessageEmbed()
             .setColor("RED")
-            .setDescription("There's nothing playing in the queue"),
+            .setDescription("ไม่มีเพลงที่กำลังเล่นใน Playlist"),
         ],
         ephemeral: true,
       });
@@ -42,9 +42,9 @@ const command = new SlashCommand()
       player.set("autoLeave", false);
     }
     autoLeaveEmbed
-			.setDescription(`**Auto Leave is** \`${!autoLeave ? "ON" : "OFF"}\``)
+			.setDescription(`**ออกจากห้องอตััโนมัติ** \`${!autoLeave ? "เปิด" : "ปิด"}\``)
 			.setFooter({
-			  text: `The player will ${!autoLeave ? "now automatically" : "not automatically"} leave when the voice channel is empty.`
+			  text: `บอทจะ ${!autoLeave ? "ออกอัตโนมัติ" : "ไม่ออกอัตโนมัติ"} เมื่อห้องนี้ว่าง.`
 			});
     client.warn(
       `Player: ${player.options.guild} | [${colors.blue(

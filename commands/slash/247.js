@@ -4,7 +4,7 @@ const SlashCommand = require("../../lib/SlashCommand");
 
 const command = new SlashCommand()
 	.setName("247")
-	.setDescription("Prevents the bot from ever disconnecting from a VC (toggle)")
+	.setDescription("เปิด/ปิด บอทไม่ให้ออกจากห้อง")
 	.setRun(async (client, interaction, options) => {
 		let channel = await client.getChannel(client, interaction);
 		if (!channel) {
@@ -29,7 +29,7 @@ const command = new SlashCommand()
 				embeds: [
 					new MessageEmbed()
 						.setColor("RED")
-						.setDescription("There's nothing to play 24/7."),
+						.setDescription("ไม่มีอะไรให้เล่น"),
 				],
 				ephemeral: true,
 			});

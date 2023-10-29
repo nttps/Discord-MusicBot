@@ -2,7 +2,7 @@ const SlashCommand = require("../../lib/SlashCommand");
 
 const command = new SlashCommand()
 	.setName("clean")
-	.setDescription("Cleans the last 100 bot messages from channel.")
+	.setDescription("ล้างข้อความล่าสุด 100 ข้อความในห้อง")
 	.addIntegerOption((option) =>
 		option
 			.setName("number")

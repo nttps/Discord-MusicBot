@@ -3,17 +3,17 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 	.setName("move")
-	.setDescription("Moves track to a different position")
+	.setDescription("ย้ายเพลงไปตำแหน่งอื่นๆ")
 	.addIntegerOption((option) =>
 		option
 			.setName("track")
-			.setDescription("The track number to move")
+			.setDescription("ตำแหน่งเพลงที่ต้องการ")
 			.setRequired(true),
 	)
 	.addIntegerOption((option) =>
 		option
 			.setName("position")
-			.setDescription("The position to move the track to")
+			.setDescription("ตำแหน่งที่ย้าย")
 			.setRequired(true),
 	)
 	
@@ -52,12 +52,12 @@ const command = new SlashCommand()
 		
 		let trackNum = Number(track) - 1;
 		if (trackNum < 0 || trackNum > player.queue.length - 1) {
-			return interaction.reply(":x: | **Invalid track number**");
+			return interaction.reply(":x: | **ไม่มีตำแหน่งนี้**");
 		}
 		
 		let dest = Number(position) - 1;
 		if (dest < 0 || dest > player.queue.length - 1) {
-			return interaction.reply(":x: | **Invalid position number**");
+			return interaction.reply(":x: | **ไม่มีตำแหน่งนี้**");
 		}
 		
 		const thing = player.queue[trackNum];
@@ -67,7 +67,7 @@ const command = new SlashCommand()
 			embeds: [
 				new MessageEmbed()
 					.setColor(client.config.embedColor)
-					.setDescription(":white_check_mark: | **Moved track**"),
+					.setDescription(":white_check_mark: | **ย้ายเพลง**"),
 			],
 		});
 	});

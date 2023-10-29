@@ -10,11 +10,11 @@ const lyricsApi = new Rlyrics();
 
 const command = new SlashCommand()
 	.setName("lyrics")
-	.setDescription("Get the lyrics of a song")
+	.setDescription("ดูเนื้อเพลง")
 	.addStringOption((option) =>
 		option
 			.setName("song")
-			.setDescription("The song to get lyrics for")
+			.setDescription("เพลงที่ต้องการเปิดเนื้อ")
 			.setRequired(false),
 	)
 	.setRun(async (client, interaction, options) => {
@@ -22,7 +22,7 @@ const command = new SlashCommand()
 			embeds: [
 				new MessageEmbed()
 					.setColor(client.config.embedColor)
-					.setDescription("🔎 | **Searching...**"),
+					.setDescription("🔎 | **กำลังค้นหา...**"),
 			],
 		});
 

@@ -3,11 +3,11 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 	.setName("remove")
-	.setDescription("Remove track you don't want from queue")
+	.setDescription("ลบเพลงออกจากคิว")
 	.addNumberOption((option) =>
 		option
 			.setName("number")
-			.setDescription("Enter track number.")
+			.setDescription("ตำแหน่งเพลง")
 			.setRequired(true),
 	)
 	
@@ -50,7 +50,7 @@ const command = new SlashCommand()
 			let thing = new MessageEmbed()
 				.setColor(client.config.embedColor)
 				.setDescription(
-					`Current queue has only **${ player.queue.size }** track`,
+					`เพลงตอนนี้มีแค่ **${ player.queue.size }** เพลง`,
 				);
 			return interaction.editReply({ embeds: [thing] });
 		}
@@ -61,7 +61,7 @@ const command = new SlashCommand()
 		const number = position + 1;
 		let removeEmbed = new MessageEmbed()
 			.setColor(client.config.embedColor)
-			.setDescription(`Removed track number **${ number }** from queue`);
+			.setDescription(`ลบเพลงตำแหน่งที่ **${ number }** จากคิว`);
 		return interaction.editReply({ embeds: [removeEmbed] });
 	});
 

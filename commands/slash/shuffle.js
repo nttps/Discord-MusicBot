@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 const command = new SlashCommand()
 	.setName("shuffle")
-	.setDescription("Randomizes the queue")
+	.setDescription("สุ่มเพลงในคิว")
 	.setRun(async (client, interaction, options) => {
 		let channel = await client.getChannel(client, interaction);
 		if (!channel) {
@@ -51,7 +51,7 @@ const command = new SlashCommand()
 			embeds: [
 				new MessageEmbed()
 					.setColor(client.config.embedColor)
-					.setDescription("🔀 | **Successfully shuffled the queue.**"),
+					.setDescription("🔀 | **สุ่มเพลงในคิวแล้ว**"),
 			],
 		});
 	});
