@@ -26,5 +26,4 @@ services:
       - 2333:2333
 
 networks:
-  lavalink: # create a lavalink network you can add other containers to, to give them access to Lavalink
-    name: lavalink
+  lavalink-net:
